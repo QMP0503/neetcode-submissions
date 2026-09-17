@@ -1,0 +1,12 @@
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        longest = 0
+        #add to hashset first number and then check n+1 if their peers are in the set
+        seen = set(nums)
+        for num in nums:
+            if (num-1) not in seen:
+                length = 1
+                while (num + length) in seen:
+                    length+=1
+                longest = max(length, longest)
+        return longest
