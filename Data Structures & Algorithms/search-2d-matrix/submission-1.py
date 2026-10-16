@@ -1,0 +1,22 @@
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        m = len(matrix)
+        n = len(matrix[0])
+
+        lo = 0
+        hi = m*n - 1
+
+        while lo <= hi:
+            mid = (lo + hi) // 2
+            row = mid // n #row this index fall in
+            col = mid % n # col is overlapping based on remainder 
+
+            if matrix[row][col] == target:
+                return True
+            elif matrix[row][col] > target:
+                hi = mid - 1
+            else:
+                lo = mid + 1
+        
+        
+        return False
